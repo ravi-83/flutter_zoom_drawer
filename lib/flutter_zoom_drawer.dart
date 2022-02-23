@@ -42,6 +42,7 @@ class ZoomDrawer extends StatefulWidget {
     this.disableGesture = false,
     this.isRtl,
     this.clipMainScreen: true,
+    required this.callBack,
   }) : assert(angle <= 0.0 && angle >= -30.0);
 
   /// Layout style
@@ -91,6 +92,9 @@ class ZoomDrawer extends StatefulWidget {
 
   /// determine whether to clip the main screen
   final bool clipMainScreen;
+
+  /// Tap on main screen it's takes us back to normal state
+  final Function callBack;
 
   @override
   _ZoomDrawerState createState() => new _ZoomDrawerState();
@@ -407,7 +411,8 @@ class _ZoomDrawerState extends State<ZoomDrawer>
             child: widget.mainScreen,
             onTap: () {
               if (_state == DrawerState.open) {
-                toggle();
+                widget.callBack();
+                /*toggle();*/
               }
             },
           ),

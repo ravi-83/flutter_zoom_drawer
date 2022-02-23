@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final isRtl = context.locale.languageCode == "ar";
     return ZoomDrawer(
+      callBack: (){},
       controller: _drawerController,
       style: DrawerStyle.Style7,
       menuScreen: MenuScreen(
